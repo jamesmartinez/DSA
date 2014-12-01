@@ -4,34 +4,21 @@ int binary_search(int num, int size, int *list)
    int start = 0;
    int end = size;
    int middle;
-   int found = 0;
    while (  start <= end )
    { 
-       if ( list[start] == num )
-       {
-          return start;
-       }
-
-       if ( list[end] == num )
-       { 
-           return end;
-       }
-
        middle = ( start + end ) / 2;
-
-       if ( list[middle] == num )
-       { 
-           return middle;
-       }
-       
        if ( list[middle] < num )
        {
-           end = middle  + 1;
+           start = middle + 1;
+           continue;
        }
-       else
+       if ( list[middle] > num )
        {
-           start = middle - 1;
+           end = middle - 1;
+           continue;
        }
+       
+       return middle;
    }
     
    return 0;
@@ -39,6 +26,6 @@ int binary_search(int num, int size, int *list)
 
 int main(void)
 {
-   int i[10] = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10}; 
-   printf("%d\n",i[binary_search(7,10,i)]);
+   int i[30] = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30}; 
+   printf("%d\n",i[binary_search(7,30,i)]);
 }
